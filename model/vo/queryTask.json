@@ -1,0 +1,176 @@
+{
+  "code": 0,
+  "data": {
+    "list": [
+      {
+        "applyTask": true,
+        "collect": true,
+        "collectCount": 0,
+        "createTime": "2022-11-13T08:52:08.710Z",
+        "endDateWarn": 0,
+        "engineerList": [
+          {
+            "address": "string",
+            "balance": 0,
+            "collegeName": "string",
+            "createTime": "2022-11-13T08:52:08.710Z",
+            "icon": "string",
+            "idCard": "string",
+            "idCardBack": "string",
+            "idCardFront": "string",
+            "idCardFrontImage": "string",
+            "idCardNo": "string",
+            "idCardReverseImage": "string",
+            "ifTeam": "string",
+            "personalProfile": "string",
+            "phone": "string",
+            "platformProjectList": [
+              {
+                "approved": 0,
+                "approver": 0,
+                "commentContent": "string",
+                "createTime": "2022-11-13T08:52:08.710Z",
+                "deleteTag": 0,
+                "endTime": "2022-11-13T08:52:08.710Z",
+                "id": 0,
+                "isCompanyPublish": 0,
+                "projectBudget": 0,
+                "projectDuration": "string",
+                "projectIntroduction": "string",
+                "projectLogo": "string",
+                "projectName": "string",
+                "projectPublisherId": 0,
+                "projectShortIntro": "string",
+                "scheduleId": 0,
+                "starCount": 0,
+                "startTime": "2022-11-13T08:52:08.710Z",
+                "updateTime": "2022-11-13T08:52:08.710Z",
+                "workExplain": "string",
+                "workType": 0
+              }
+            ],
+            "positionTypeList": [
+              {
+                "createTime": "2022-11-13T08:52:08.710Z",
+                "id": 0,
+                "positionExplain": "string",
+                "positionName": "string"
+              }
+            ],
+            "projectCount": 0,
+            "realNameApproved": 0,
+            "salary": 0,
+            "shortPersonalProfile": "string",
+            "skillTypeList": [
+              {
+                "createTime": "2022-11-13T08:52:08.710Z",
+                "id": 0,
+                "skillExplain": "string",
+                "skillName": "string"
+              }
+            ],
+            "starCount": 0,
+            "userEducations": [
+              {
+                "collegeName": "string",
+                "createTime": "2022-11-13T08:52:08.710Z",
+                "degreeName": "string",
+                "educationIntro": "string",
+                "endTime": "2022-11-13T08:52:08.710Z",
+                "entranceTime": "string",
+                "id": 0,
+                "majorName": "string",
+                "startTime": "2022-11-13T08:52:08.710Z",
+                "userId": 0
+              }
+            ],
+            "userId": 0,
+            "userName": "string",
+            "userProjectList": [
+              {
+                "createTime": "2022-11-13T08:52:08.710Z",
+                "endTime": "2022-11-13T08:52:08.710Z",
+                "id": 0,
+                "projectIntro": "string",
+                "projectName": "string",
+                "startTime": "2022-11-13T08:52:08.710Z",
+                "userId": 0
+              }
+            ],
+            "userWorksList": [
+              {
+                "companyName": "string",
+                "createTime": "2022-11-13T08:52:08.710Z",
+                "endTime": "2022-11-13T08:52:08.710Z",
+                "id": 0,
+                "startTime": "2022-11-13T08:52:08.710Z",
+                "stationName": "string",
+                "userId": 0,
+                "workContent": "string"
+              }
+            ],
+            "wechat": "string",
+            "workStatus": "string",
+            "workType": 0,
+            "workYears": 0
+          }
+        ],
+        "id": 0,
+        "phone": "string",
+        "projectBudget": 0,
+        "projectDuration": "string",
+        "projectFileList": [
+          {
+            "createTime": "2022-11-13T08:52:08.710Z",
+            "fileName": "string",
+            "fileTypeId": 0,
+            "fileUrl": "string",
+            "id": 0,
+            "projectId": 0,
+            "userId": 0
+          }
+        ],
+        "projectIntroduction": "string",
+        "projectLogo": "string",
+        "projectName": "string",
+        "projectPositionTypeList": [
+          {
+            "createTime": "2022-11-13T08:52:08.710Z",
+            "id": 0,
+            "positionExplain": "string",
+            "positionName": "string"
+          }
+        ],
+        "projectPublisherId": 0,
+        "projectPublisherName": "string",
+        "projectScheduleId": 0,
+        "projectScheduleList": [
+          {
+            "createTime": "2022-11-13T08:52:08.710Z",
+            "id": 0,
+            "scheduleName": "string"
+          }
+        ],
+        "projectScheduleName": "string",
+        "projectShortIntro": "string",
+        "projectTypeList": [
+          {
+            "createTime": "2022-11-13T08:52:08.710Z",
+            "id": 0,
+            "typeExplain": "string",
+            "typeName": "string"
+          }
+        ],
+        "updateTime": "2022-11-13T08:52:08.710Z",
+        "workExplain": "string",
+        "workType": 0
+      }
+    ],
+    "pageNum": 0,
+    "pageSize": 0,
+    "total": 0,
+    "totalPage": 0
+  },
+  "message": "string"
+}
+

@@ -1,0 +1,961 @@
+definitions:
+  dto.IdentifyingCode:
+    properties:
+      identity:
+        description: 身份标志;1:雇主，2:开发者,3:忘记密码
+        type: string
+      phone:
+        description: 电话
+        type: string
+    type: object
+  dto.RegisterParam:
+    properties:
+      code:
+        description: 验证码
+        type: string
+      identity_tag:
+        description: 身份标志;1:雇主，2:开发者
+        type: integer
+      password:
+        description: 密码
+        type: string
+      phone:
+        description: 电话
+        type: string
+      username:
+        description: 用户名
+        type: string
+    type: object
+  model.User:
+    properties:
+      address:
+        type: string
+      alipay:
+        type: string
+      approver:
+        type: integer
+      auth_type:
+        type: integer
+      college:
+        type: string
+      create_time:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      id_card:
+        type: string
+      if_student:
+        type: integer
+      is_publisher:
+        type: integer
+      password:
+        type: string
+      personal_profile:
+        type: string
+      phone:
+        type: string
+      qq:
+        type: string
+      real_name:
+        type: string
+      real_name_approved:
+        type: integer
+      salary:
+        type: integer
+      sex:
+        type: integer
+      short_personal_profile:
+        type: string
+      update_time:
+        type: string
+      username:
+        type: string
+      wechat:
+        type: string
+      work_state_id:
+        type: integer
+      work_type:
+        type: integer
+      work_years:
+        type: integer
+    type: object
+  swagger.Http400:
+    properties:
+      code:
+        example: 400
+        type: integer
+      msg:
+        example: Bad Request
+        type: string
+    type: object
+  swagger.Http404:
+    properties:
+      code:
+        example: 404
+        type: integer
+      msg:
+        example: Page Not Found
+        type: string
+    type: object
+  swagger.Http500:
+    properties:
+      code:
+        example: 500
+        type: integer
+      msg:
+        example: 服务器内部错误
+        type: string
+    type: object
+  swagger.HttpOk:
+    properties:
+      code:
+        example: 200
+        type: integer
+      msg:
+        example: 接口调用成功
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /example/getAuthorizationHeader:
+    get:
+      consumes:
+      - application/json
+      description: Get 请求, 请求参数是 URL 的一部分
+      parameters:
+      - description: Authorization Header
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Get 请求, 请求参数是 URL 的一部分
+      tags:
+      - exampleApi
+  /example/getExtendAttribute:
+    get:
+      consumes:
+      - application/json
+      description: Get 请求, 请求参数在 URL 中携带, 对参数配置了校验规则
+      parameters:
+      - description: 字符串类型,参数必须是下面下拉列表中的值
+        enum:
+        - A
+        - B
+        - C
+        in: query
+        name: enumString
+        type: string
+      - description: 整数类型, 参数必须是下面下拉列表中的值
+        enum:
+        - 1
+        - 2
+        - 3
+        in: query
+        name: enumInt
+        type: integer
+      - description: 浮点数类型, 参数必须是下面下拉列表中的值
+        enum:
+        - 1.1
+        - 1.2
+        - 1.3
+        in: query
+        name: enumNumber
+        type: number
+      - description: 验证规则:字符串最小长度 5, 最大长度 10
+        in: query
+        maxLength: 10
+        minLength: 5
+        name: string
+        type: string
+      - description: '验证部规则: 整数最小值为 1, 最大值为 10'
+        in: query
+        maximum: 10
+        minimum: 1
+        name: int
+        type: integer
+      - default: A
+        description: 提供默认的字符串在编辑框中
+        in: query
+        name: default
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Get 请求, 请求参数在 URL 中携带, 对参数配置了校验规则
+      tags:
+      - exampleApi
+  /example/getWithPathVar/groups/{group_id}/accounts/{account_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get 请求, 请求参数是 URL 的一部分
+      parameters:
+      - description: 组 ID
+        in: path
+        name: group_id
+        required: true
+        type: string
+      - description: 账号 ID
+        in: path
+        name: account_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Get 请求, 请求参数是 URL 的一部分
+      tags:
+      - exampleApi
+  /example/getWithUrlQueryString:
+    get:
+      consumes:
+      - application/json
+      description: 使用 Get 请求, 在 URL 上携带参数
+      parameters:
+      - description: 用户 ID
+        in: query
+        name: id
+        required: true
+        type: integer
+      - description: 用户名称
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: 使用 Get 请求, 在 URL 上携带参数
+      tags:
+      - exampleApi
+  /example/postAuthorizationHeader:
+    post:
+      consumes:
+      - application/json
+      description: Post 请求, 参数在 Header 中
+      parameters:
+      - description: Authorization Header
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Post 请求, 参数在 Header 中
+      tags:
+      - exampleApi
+  /example/postExtendAttribute:
+    post:
+      consumes:
+      - application/json
+      description: Post 请求, 请求参数在 URL 中携带, 对参数配置了校验规则
+      parameters:
+      - description: 字符串类型,参数必须是下面下拉列表中的值
+        enum:
+        - A
+        - B
+        - C
+        in: query
+        name: enumString
+        type: string
+      - description: 整数类型, 参数必须是下面下拉列表中的值
+        enum:
+        - 1
+        - 2
+        - 3
+        in: query
+        name: enumInt
+        type: integer
+      - description: 浮点数类型, 参数必须是下面下拉列表中的值
+        enum:
+        - 1.1
+        - 1.2
+        - 1.3
+        in: query
+        name: enumNumber
+        type: number
+      - description: 验证规则:字符串最小长度 5, 最大长度 10
+        in: query
+        maxLength: 10
+        minLength: 5
+        name: string
+        type: string
+      - description: '验证部规则: 整数最小值为 1, 最大值为 10'
+        in: query
+        maximum: 10
+        minimum: 1
+        name: int
+        type: integer
+      - default: A
+        description: 提供默认的字符串在编辑框中
+        in: query
+        name: default
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Post 请求, 请求参数在 URL 中携带, 对参数配置了校验规则
+      tags:
+      - exampleApi
+  /example/postFormData:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Post 请求, 发送 Json 数据, 参数在消息体中
+      parameters:
+      - description: 前端发送的表单中的 name 参数
+        in: formData
+        name: name
+        type: string
+      - description: 前端发送的表单中的 age 参数
+        in: formData
+        name: age
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Post 请求, 发送 Json 数据, 参数在消息体中
+      tags:
+      - exampleApi
+  /example/postJsonData:
+    post:
+      consumes:
+      - application/json
+      description: Post 请求, 发送 Json 数据, 参数在消息体中
+      parameters:
+      - description: 前端发送的 Json 对象
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/model.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Post 请求, 发送 Json 数据, 参数在消息体中
+      tags:
+      - exampleApi
+  /example/postUrlEncodedFormData:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: 'Post 请求, 发送表单数据, 表单类型为: x-www-form-urlencoded, 参数在消息体中'
+      parameters:
+      - description: 前端发送的表单中的 name 参数
+        in: formData
+        name: name
+        type: string
+      - description: 前端发送的表单中的 age 参数
+        in: formData
+        name: age
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.User'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: 'Post 请求, 发送表单数据, 表单类型为: x-www-form-urlencoded, 参数在消息体中'
+      tags:
+      - exampleApi
+  /example/postWithPathVariable/groups/{group_id}/accounts/{account_id}:
+    post:
+      consumes:
+      - application/json
+      description: Post 请求, 请求参数是 URL 的一部分
+      parameters:
+      - description: 组 ID
+        in: path
+        name: group_id
+        required: true
+        type: string
+      - description: 账号 ID
+        in: path
+        name: account_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Post 请求, 请求参数是 URL 的一部分
+      tags:
+      - exampleApi
+  /example/postWithUrlQuery:
+    post:
+      consumes:
+      - application/json
+      description: 使用 POST 请求, 参数拼接到 URL 后面
+      parameters:
+      - description: 用户 ID
+        in: query
+        name: id
+        required: true
+        type: integer
+      - description: 用户名称
+        in: query
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: 使用 POST 请求, 参数拼接到 URL 后面
+      tags:
+      - exampleApi
+  /example/simpleGet:
+    get:
+      consumes:
+      - application/json
+      description: 最简单独额接口测试,使用 Get 请求, 不携带参数
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: 最简单独额接口测试,使用 Get 请求, 不携带参数
+      tags:
+      - exampleApi
+  /example/simplePost:
+    post:
+      consumes:
+      - application/json
+      description: 最简单的 POST 请求, 前端不传递任何参数
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: 最简单的 POST 请求, 前端不传递任何参数
+      tags:
+      - exampleApi
+  /project/queryTask:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Post 请求, 发送表单数据, 参数在消息体中
+      parameters:
+      - description: 用户 ID
+        in: formData
+        name: id
+        type: integer
+      - description: 项目 名称
+        in: formData
+        name: project_name
+        type: string
+      - description: 项目发布者id
+        in: formData
+        name: project_publisher_id
+        type: integer
+      - description: 项目预算最小值
+        in: formData
+        name: min_project_budget
+        type: integer
+      - description: 项目预算最大值
+        in: formData
+        name: max_project_budget
+        type: integer
+      - description: 项目周期
+        in: formData
+        name: project_duration
+        type: integer
+      - description: 创建时间开始
+        in: formData
+        name: create_time_begin
+        type: string
+      - description: 创建事件结束
+        in: formData
+        name: create_time_end
+        type: string
+      - description: 最后一次更新时间开始
+        in: formData
+        name: update_time_begin
+        type: string
+      - description: 最后一次更新时间结束
+        in: formData
+        name: update_time_end
+        type: string
+      - description: 项目进度ID
+        in: formData
+        name: project_schedule_id
+        type: integer
+      - description: 工作类型
+        in: formData
+        name: work_type
+        type: integer
+      - description: 项目所需工程师类型列表
+        in: formData
+        name: project_position_type_list
+        type: array
+      - description: 项目类型列表
+        in: formData
+        name: project_type_list
+        type: array
+      - description: 排序类型 0为按金额排序 1为按周期排序
+        in: formData
+        name: order_type
+        type: integer
+      - description: 排序方式 0为正序 1为逆序
+        in: formData
+        name: order_way
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Post 请求, 发送表单数据, 参数在消息体中
+      tags:
+      - projectApi
+  /project/sendTask:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Post 请求, 发送 Json 数据, 参数在消息体中
+      parameters:
+      - description: 项目名称
+        in: formData
+        name: project_name
+        required: true
+        type: string
+      - description: 项目预算
+        in: formData
+        name: project_budget
+        required: true
+        type: integer
+      - description: 项目简介
+        in: formData
+        name: project_short_intro
+        required: true
+        type: string
+      - description: 项目logo
+        in: formData
+        name: ProjectLogo
+        required: true
+        type: string
+      - description: 项目介绍
+        in: formData
+        name: ProjectIntroduction
+        required: true
+        type: string
+      - description: 项目周期
+        in: formData
+        name: ProjectDuration
+        required: true
+        type: string
+      - description: 项目开始时间
+        in: formData
+        name: StartTime
+        required: true
+        type: string
+      - description: 项目结束时间
+        in: formData
+        name: EndTime
+        required: true
+        type: string
+      - description: 工作内容说明
+        in: formData
+        name: WorkExplain
+        required: true
+        type: string
+      - description: 工作类型说明
+        in: formData
+        name: ProjectTypeIdList
+        required: true
+        type: array
+      - description: 工程师类型ID列表
+        in: formData
+        name: EngineerTypeIdList
+        required: true
+        type: array
+      - description: 工作类型
+        in: formData
+        name: WorkType
+        required: true
+        type: integer
+      - description: 项目文件
+        in: formData
+        name: FileList
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Post 请求, 发送 Json 数据, 参数在消息体中
+      tags:
+      - projectApi
+  /user/login:
+    post:
+      consumes:
+      - multipart/form-data
+      description: Post 请求, 发送 multipart/form-data 类型的表单数据, 参数在消息体中
+      parameters:
+      - description: 要注册的用户名
+        in: formData
+        maxLength: 20
+        minLength: 1
+        name: username
+        required: true
+        type: string
+      - description: 用户密码
+        in: formData
+        maxLength: 128
+        minLength: 1
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Post 请求, 发送 multipart/form-data 类型的表单数据, 参数在消息体中
+      tags:
+      - userApi
+  /user/register:
+    post:
+      consumes:
+      - application/json
+      description: Post 请求, 发送 multipart/form-data 类型的表单数据, 参数在消息体中
+      parameters:
+      - description: 前端发送的 Json 对象
+        in: body
+        name: registerParam
+        required: true
+        schema:
+          $ref: '#/definitions/dto.RegisterParam'
+      produces:
+      - application/json
+      responses:
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Post 请求, 发送 multipart/form-data 类型的表单数据, 参数在消息体中
+      tags:
+      - userApi
+  /user/sendCode:
+    post:
+      consumes:
+      - application/json
+      description: Post 请求, 发送 Json 数据, 参数在消息体中
+      parameters:
+      - description: 前端发送的 Json 对象
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.IdentifyingCode'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      summary: Post 请求, 发送 Json 数据, 参数在消息体中
+      tags:
+      - userApi
+  /user/testAuth:
+    get:
+      consumes:
+      - application/json
+      description: 访问该接口的时候, 用户必须是已经登录成功
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/swagger.HttpOk'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Http400'
+        "404":
+          description: Page Not Found
+          schema:
+            $ref: '#/definitions/swagger.Http404'
+        "500":
+          description: InternalError
+          schema:
+            $ref: '#/definitions/swagger.Http500'
+      security:
+      - ApiKeyAuth: []
+      summary: 访问该接口的时候, 用户必须是已经登录成功
+      tags:
+      - userApi
+swagger: "2.0"

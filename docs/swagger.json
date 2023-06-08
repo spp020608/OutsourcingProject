@@ -1,0 +1,1434 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/example/getAuthorizationHeader": {
+            "get": {
+                "description": "Get 请求, 请求参数是 URL 的一部分",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "Get 请求, 请求参数是 URL 的一部分",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization Header",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/getExtendAttribute": {
+            "get": {
+                "description": "Get 请求, 请求参数在 URL 中携带, 对参数配置了校验规则",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "Get 请求, 请求参数在 URL 中携带, 对参数配置了校验规则",
+                "parameters": [
+                    {
+                        "enum": [
+                            "A",
+                            "B",
+                            "C"
+                        ],
+                        "type": "string",
+                        "description": "字符串类型,参数必须是下面下拉列表中的值",
+                        "name": "enumString",
+                        "in": "query"
+                    },
+                    {
+                        "enum": [
+                            1,
+                            2,
+                            3
+                        ],
+                        "type": "integer",
+                        "description": "整数类型, 参数必须是下面下拉列表中的值",
+                        "name": "enumInt",
+                        "in": "query"
+                    },
+                    {
+                        "enum": [
+                            1.1,
+                            1.2,
+                            1.3
+                        ],
+                        "type": "number",
+                        "description": "浮点数类型, 参数必须是下面下拉列表中的值",
+                        "name": "enumNumber",
+                        "in": "query"
+                    },
+                    {
+                        "maxLength": 10,
+                        "minLength": 5,
+                        "type": "string",
+                        "description": "验证规则:字符串最小长度 5, 最大长度 10",
+                        "name": "string",
+                        "in": "query"
+                    },
+                    {
+                        "maximum": 10,
+                        "minimum": 1,
+                        "type": "integer",
+                        "description": "验证部规则: 整数最小值为 1, 最大值为 10",
+                        "name": "int",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "default": "A",
+                        "description": "提供默认的字符串在编辑框中",
+                        "name": "default",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/getWithPathVar/groups/{group_id}/accounts/{account_id}": {
+            "get": {
+                "description": "Get 请求, 请求参数是 URL 的一部分",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "Get 请求, 请求参数是 URL 的一部分",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "组 ID",
+                        "name": "group_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "账号 ID",
+                        "name": "account_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/getWithUrlQueryString": {
+            "get": {
+                "description": "使用 Get 请求, 在 URL 上携带参数",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "使用 Get 请求, 在 URL 上携带参数",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "用户 ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "用户名称",
+                        "name": "name",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/postAuthorizationHeader": {
+            "post": {
+                "description": "Post 请求, 参数在 Header 中",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "Post 请求, 参数在 Header 中",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Authorization Header",
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/postExtendAttribute": {
+            "post": {
+                "description": "Post 请求, 请求参数在 URL 中携带, 对参数配置了校验规则",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "Post 请求, 请求参数在 URL 中携带, 对参数配置了校验规则",
+                "parameters": [
+                    {
+                        "enum": [
+                            "A",
+                            "B",
+                            "C"
+                        ],
+                        "type": "string",
+                        "description": "字符串类型,参数必须是下面下拉列表中的值",
+                        "name": "enumString",
+                        "in": "query"
+                    },
+                    {
+                        "enum": [
+                            1,
+                            2,
+                            3
+                        ],
+                        "type": "integer",
+                        "description": "整数类型, 参数必须是下面下拉列表中的值",
+                        "name": "enumInt",
+                        "in": "query"
+                    },
+                    {
+                        "enum": [
+                            1.1,
+                            1.2,
+                            1.3
+                        ],
+                        "type": "number",
+                        "description": "浮点数类型, 参数必须是下面下拉列表中的值",
+                        "name": "enumNumber",
+                        "in": "query"
+                    },
+                    {
+                        "maxLength": 10,
+                        "minLength": 5,
+                        "type": "string",
+                        "description": "验证规则:字符串最小长度 5, 最大长度 10",
+                        "name": "string",
+                        "in": "query"
+                    },
+                    {
+                        "maximum": 10,
+                        "minimum": 1,
+                        "type": "integer",
+                        "description": "验证部规则: 整数最小值为 1, 最大值为 10",
+                        "name": "int",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "default": "A",
+                        "description": "提供默认的字符串在编辑框中",
+                        "name": "default",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/postFormData": {
+            "post": {
+                "description": "Post 请求, 发送 Json 数据, 参数在消息体中",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "Post 请求, 发送 Json 数据, 参数在消息体中",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "前端发送的表单中的 name 参数",
+                        "name": "name",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "前端发送的表单中的 age 参数",
+                        "name": "age",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/postJsonData": {
+            "post": {
+                "description": "Post 请求, 发送 Json 数据, 参数在消息体中",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "Post 请求, 发送 Json 数据, 参数在消息体中",
+                "parameters": [
+                    {
+                        "description": "前端发送的 Json 对象",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/postUrlEncodedFormData": {
+            "post": {
+                "description": "Post 请求, 发送表单数据, 表单类型为: x-www-form-urlencoded, 参数在消息体中",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "Post 请求, 发送表单数据, 表单类型为: x-www-form-urlencoded, 参数在消息体中",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "前端发送的表单中的 name 参数",
+                        "name": "name",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "前端发送的表单中的 age 参数",
+                        "name": "age",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.User"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/postWithPathVariable/groups/{group_id}/accounts/{account_id}": {
+            "post": {
+                "description": "Post 请求, 请求参数是 URL 的一部分",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "Post 请求, 请求参数是 URL 的一部分",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "组 ID",
+                        "name": "group_id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "账号 ID",
+                        "name": "account_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/postWithUrlQuery": {
+            "post": {
+                "description": "使用 POST 请求, 参数拼接到 URL 后面",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "使用 POST 请求, 参数拼接到 URL 后面",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "用户 ID",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "用户名称",
+                        "name": "name",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/simpleGet": {
+            "get": {
+                "description": "最简单独额接口测试,使用 Get 请求, 不携带参数",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "最简单独额接口测试,使用 Get 请求, 不携带参数",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/example/simplePost": {
+            "post": {
+                "description": "最简单的 POST 请求, 前端不传递任何参数",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "exampleApi"
+                ],
+                "summary": "最简单的 POST 请求, 前端不传递任何参数",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/queryTask": {
+            "post": {
+                "description": "Post 请求, 发送表单数据, 参数在消息体中",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "projectApi"
+                ],
+                "summary": "Post 请求, 发送表单数据, 参数在消息体中",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "用户 ID",
+                        "name": "id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "项目 名称",
+                        "name": "project_name",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "项目发布者id",
+                        "name": "project_publisher_id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "项目预算最小值",
+                        "name": "min_project_budget",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "项目预算最大值",
+                        "name": "max_project_budget",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "项目周期",
+                        "name": "project_duration",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "创建时间开始",
+                        "name": "create_time_begin",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "创建事件结束",
+                        "name": "create_time_end",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "最后一次更新时间开始",
+                        "name": "update_time_begin",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "最后一次更新时间结束",
+                        "name": "update_time_end",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "项目进度ID",
+                        "name": "project_schedule_id",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "工作类型",
+                        "name": "work_type",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "array",
+                        "description": "项目所需工程师类型列表",
+                        "name": "project_position_type_list",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "array",
+                        "description": "项目类型列表",
+                        "name": "project_type_list",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "排序类型 0为按金额排序 1为按周期排序",
+                        "name": "order_type",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "排序方式 0为正序 1为逆序",
+                        "name": "order_way",
+                        "in": "formData"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/project/sendTask": {
+            "post": {
+                "description": "Post 请求, 发送 Json 数据, 参数在消息体中",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "projectApi"
+                ],
+                "summary": "Post 请求, 发送 Json 数据, 参数在消息体中",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "项目名称",
+                        "name": "project_name",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "项目预算",
+                        "name": "project_budget",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "项目简介",
+                        "name": "project_short_intro",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "项目logo",
+                        "name": "ProjectLogo",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "项目介绍",
+                        "name": "ProjectIntroduction",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "项目周期",
+                        "name": "ProjectDuration",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "项目开始时间",
+                        "name": "StartTime",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "项目结束时间",
+                        "name": "EndTime",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "工作内容说明",
+                        "name": "WorkExplain",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "array",
+                        "description": "工作类型说明",
+                        "name": "ProjectTypeIdList",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "array",
+                        "description": "工程师类型ID列表",
+                        "name": "EngineerTypeIdList",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "工作类型",
+                        "name": "WorkType",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "file",
+                        "description": "项目文件",
+                        "name": "FileList",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "description": "Post 请求, 发送 multipart/form-data 类型的表单数据, 参数在消息体中",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userApi"
+                ],
+                "summary": "Post 请求, 发送 multipart/form-data 类型的表单数据, 参数在消息体中",
+                "parameters": [
+                    {
+                        "maxLength": 20,
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "要注册的用户名",
+                        "name": "username",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "maxLength": 128,
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "用户密码",
+                        "name": "password",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/register": {
+            "post": {
+                "description": "Post 请求, 发送 multipart/form-data 类型的表单数据, 参数在消息体中",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userApi"
+                ],
+                "summary": "Post 请求, 发送 multipart/form-data 类型的表单数据, 参数在消息体中",
+                "parameters": [
+                    {
+                        "description": "前端发送的 Json 对象",
+                        "name": "registerParam",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.RegisterParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/sendCode": {
+            "post": {
+                "description": "Post 请求, 发送 Json 数据, 参数在消息体中",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userApi"
+                ],
+                "summary": "Post 请求, 发送 Json 数据, 参数在消息体中",
+                "parameters": [
+                    {
+                        "description": "前端发送的 Json 对象",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.IdentifyingCode"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/testAuth": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "访问该接口的时候, 用户必须是已经登录成功",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "userApi"
+                ],
+                "summary": "访问该接口的时候, 用户必须是已经登录成功",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.HttpOk"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http400"
+                        }
+                    },
+                    "404": {
+                        "description": "Page Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http404"
+                        }
+                    },
+                    "500": {
+                        "description": "InternalError",
+                        "schema": {
+                            "$ref": "#/definitions/swagger.Http500"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.IdentifyingCode": {
+            "type": "object",
+            "properties": {
+                "identity": {
+                    "description": "身份标志;1:雇主，2:开发者,3:忘记密码",
+                    "type": "string"
+                },
+                "phone": {
+                    "description": "电话",
+                    "type": "string"
+                }
+            }
+        },
+        "dto.RegisterParam": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "description": "验证码",
+                    "type": "string"
+                },
+                "identity_tag": {
+                    "description": "身份标志;1:雇主，2:开发者",
+                    "type": "integer"
+                },
+                "password": {
+                    "description": "密码",
+                    "type": "string"
+                },
+                "phone": {
+                    "description": "电话",
+                    "type": "string"
+                },
+                "username": {
+                    "description": "用户名",
+                    "type": "string"
+                }
+            }
+        },
+        "model.User": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "alipay": {
+                    "type": "string"
+                },
+                "approver": {
+                    "type": "integer"
+                },
+                "auth_type": {
+                    "type": "integer"
+                },
+                "college": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "id_card": {
+                    "type": "string"
+                },
+                "if_student": {
+                    "type": "integer"
+                },
+                "is_publisher": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "personal_profile": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "qq": {
+                    "type": "string"
+                },
+                "real_name": {
+                    "type": "string"
+                },
+                "real_name_approved": {
+                    "type": "integer"
+                },
+                "salary": {
+                    "type": "integer"
+                },
+                "sex": {
+                    "type": "integer"
+                },
+                "short_personal_profile": {
+                    "type": "string"
+                },
+                "update_time": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                },
+                "wechat": {
+                    "type": "string"
+                },
+                "work_state_id": {
+                    "type": "integer"
+                },
+                "work_type": {
+                    "type": "integer"
+                },
+                "work_years": {
+                    "type": "integer"
+                }
+            }
+        },
+        "swagger.Http400": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 400
+                },
+                "msg": {
+                    "type": "string",
+                    "example": "Bad Request"
+                }
+            }
+        },
+        "swagger.Http404": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 404
+                },
+                "msg": {
+                    "type": "string",
+                    "example": "Page Not Found"
+                }
+            }
+        },
+        "swagger.Http500": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 500
+                },
+                "msg": {
+                    "type": "string",
+                    "example": "服务器内部错误"
+                }
+            }
+        },
+        "swagger.HttpOk": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "msg": {
+                    "type": "string",
+                    "example": "接口调用成功"
+                }
+            }
+        }
+    }
+}
